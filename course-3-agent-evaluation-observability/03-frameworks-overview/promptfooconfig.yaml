@@ -1,0 +1,20 @@
+prompts:
+  - "Review this code and list issues: {{code}}"
+providers:
+  - anthropic:messages:claude-sonnet-5
+tests:
+  - vars:
+      code: "def f(x): return 1/x"
+    assert:
+      - type: contains
+        value: "ZeroDivisionError"
+  - vars:
+      code: "def f(x):\n    try:\n        return 1/x\n    except:\n        return 0"
+    assert:
+      - type: contains
+        value: "except"
+  - vars:
+          code: "public int f(int x) {\n    try {\n        return 1 / x;\n    } catch (Exception e) {\n        return 0;\n    }\n}"
+    assert:
+      - type: contains
+        value: "catch"

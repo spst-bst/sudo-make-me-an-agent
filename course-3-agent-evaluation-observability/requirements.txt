@@ -1,0 +1,3 @@
+# Only needed if you wire the harness up to the real Course 1 agent
+# (04-eval-harness/exercise_starter.py) instead of the built-in mock.
+anthropic>=0.40.0
